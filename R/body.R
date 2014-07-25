@@ -27,14 +27,14 @@ body_config <- function(body = NULL, encode = "form")  {
 
   if (!is.list(body)) {
     stop("Unknown body type: must be NULL, FALSE, character, raw or list",
-      call. = FALSE)
+         call. = FALSE)
   }
 
   # Deal with three ways to encode: form, multipart & json
   if (encode == "form") {
     body_raw(compose_query(body), "application/x-www-form-urlencoded")
   } else if (encode == "json") {
-    body_raw(jsonlite::toJSON(body), "application/json")
+    body_raw(RJSONIO::toJSON(body), "application/json")
   } else if (encode == "multipart") {
     # For multipart, rely on RCurl .postForm function to make it possible
     # to intermingle on-disk and in-memory content.
