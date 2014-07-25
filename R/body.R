@@ -83,7 +83,5 @@ body_raw <- function(body, type = NULL) {
     base$config$httpheader <- c("Content-type" = type)
   }
 
-  global_object <<- base
-
   base
 }
